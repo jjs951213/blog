@@ -64,6 +64,7 @@ export const list = async ctx => {
     const posts = await Post.find()
       .sort({ _id: -1 })
       .limit(10)
+      .skip((page - 1) * 10)
       .exec();
     ctx.body = posts;
   } catch (e) {
