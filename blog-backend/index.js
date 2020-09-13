@@ -11,13 +11,9 @@ app.use((ctx, next) => {
         ctx.status = 401; // Unauthorized
         return;
       }
-      next();
+      await next();
+      console.log('END');
     });
-    
-    
-
-  
-  
   
   app.use((ctx, next) => {
     console.log(2);
