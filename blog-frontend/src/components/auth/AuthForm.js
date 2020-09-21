@@ -59,7 +59,7 @@ const StyledInput = styled.input`
             `;
 
           
-          const AuthForm = ({ type, form, onChange, onSubmit }) => {
+          const AuthForm = ({ type, form, onChange, onSubmit ,error}) => {
             const text = textMap[type];
             return (
               <AuthFormBlock>
@@ -90,7 +90,7 @@ const StyledInput = styled.input`
                       value={form.passwordConfirm}
                     />
                   )}
-                   <ErrorMessage>에러 발생!</ErrorMessage>
+                   {error && <ErrorMessage>{error}</ErrorMessage>}
                   <ButtonWithMarginTop cyan fullWidth style={{ marginTop: '1rem' }}>
                     {text}
                   </ButtonWithMarginTop>
