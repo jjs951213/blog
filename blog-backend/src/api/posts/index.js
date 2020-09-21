@@ -1,5 +1,6 @@
 import Router from 'koa-router';
 import * as postsCtrl from './posts.ctrl';
+import Joi from 'joi';
 
 
 const posts = new Router();
