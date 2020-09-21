@@ -11,7 +11,7 @@ const RegisterForm = () => {
   const { form } = useSelector(({ auth,user }) => ({
     form: auth.register,
     auth: auth.auth,
-    authError: auth.authError
+    authError: auth.authError,
     user: user.user
   }));
   // 인풋 변경 이벤트 핸들러
@@ -55,8 +55,9 @@ const RegisterForm = () => {
     if (auth) {
       console.log('회원가입 성공');
       console.log(auth);
+      dispatch(check());
     }
-  }, [auth, authError,dispatch]);
+  }, [auth, authError, dispatch]);
 
 
   useEffect(() => {
@@ -79,5 +80,5 @@ return (
 
 
 
-export default RegisterForm;
+export default withRouter (RegisterForm);
 
