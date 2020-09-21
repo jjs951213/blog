@@ -51,6 +51,13 @@ const StyledInput = styled.input`
             register: '회원가입',
           };
           
+          const ErrorMessage = styled.div`
+            color: red;
+            text-align: center;
+            font-size: 0.875rem;
+            margin-top: 1rem;
+            `;
+
           
           const AuthForm = ({ type, form, onChange, onSubmit }) => {
             const text = textMap[type];
@@ -83,6 +90,7 @@ const StyledInput = styled.input`
                       value={form.passwordConfirm}
                     />
                   )}
+                   <ErrorMessage>에러 발생!</ErrorMessage>
                   <ButtonWithMarginTop cyan fullWidth style={{ marginTop: '1rem' }}>
                     {text}
                   </ButtonWithMarginTop>
