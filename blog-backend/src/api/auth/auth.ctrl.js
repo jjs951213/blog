@@ -2,13 +2,6 @@ import Joi from 'joi';
 import User from '../../models/user';
 
 
-/*
-  POST /api/auth/register
-  {
-    username: 'velopert',
-    password: 'mypass123'
-  }
-*/
 export const register = async ctx => {
   // Request Body 검증하기
   const schema = Joi.object().keys({
@@ -46,6 +39,12 @@ await user.save();
 const data = user.toJSON();
 delete data.hashedPassword;
 ctx.body = user.serialize;
+const token = user.generateToken();
+ctx.cookies.set('access_token', token{
+    maxAge: 1000*60*60*24*7, // 7일
+    httpOnly: true,
+});    
+
 } catch (e) {
     ctx.throw(500, e);
   }
