@@ -43,6 +43,7 @@ const { title, body, tags } = ctx.request.body;
     title,
     body,
     tags,
+    user: ctx.state.user,
   });
   try {
     await post.save();
