@@ -23,3 +23,10 @@ UserSchema.statics.findByUsername = function(username) {
   
 const User = mongoose.model('User', UserSchema);
 export default User;
+
+
+UserSchema.methods.serialize = function() {
+    const data = this.toJSON();
+    delete data.hashedPassword;
+    return data;
+  };
