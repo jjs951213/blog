@@ -1,19 +1,11 @@
-<<<<<<< HEAD
 import React, { useEffect, useState } from 'react';
-=======
-import React, { useEffect } from 'react';
->>>>>>> 5a2fa79681dd107381980eddfe0ec700a5011372
 import { useSelector, useDispatch } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { changeField, initializeForm, login } from '../../modules/auth';
 import AuthForm from '../../components/auth/AuthForm';
 import { check } from '../../modules/user';
 
-<<<<<<< HEAD
 
-
-=======
->>>>>>> 5a2fa79681dd107381980eddfe0ec700a5011372
 const LoginForm = ({ history }) => {
   const dispatch = useDispatch();
   const { form, auth, authError, user } = useSelector(({ auth, user }) => ({
@@ -22,7 +14,8 @@ const LoginForm = ({ history }) => {
     authError: auth.authError,
     user: user.user
   }));
-<<<<<<< HEAD
+
+  
    // 인풋 변경 이벤트 핸들러
    const onChange = e => {
     const { value, name } = e.target;
@@ -36,13 +29,6 @@ const LoginForm = ({ history }) => {
   };
 
 
-=======
-  // 인풋 변경 이벤트 핸들러
-  const onChange = e => {
-    (...)
-  };
-
->>>>>>> 5a2fa79681dd107381980eddfe0ec700a5011372
   // 폼 등록 이벤트 핸들러
   const onSubmit = e => {
     e.preventDefault();
@@ -59,10 +45,7 @@ const LoginForm = ({ history }) => {
     if (authError) {
       console.log('오류 발생');
       console.log(authError);
-<<<<<<< HEAD
       setError('로그인 실패');
-=======
->>>>>>> 5a2fa79681dd107381980eddfe0ec700a5011372
       return;
     }
     if (auth) {
@@ -74,10 +57,16 @@ const LoginForm = ({ history }) => {
   useEffect(() => {
     if (user) {
       history.push('/');
+      try {
+        localStorage.setItem('user', JSON.stringify(user));
+      } catch (e) {
+        console.log('localStorage is not working');
+      }
     }
   }, [history, user]);
 
-<<<<<<< HEAD
+
+
   return (
     <AuthForm
       type="login"
@@ -87,9 +76,6 @@ const LoginForm = ({ history }) => {
       error={error}
     />
   );
-=======
-  return (...);
->>>>>>> 5a2fa79681dd107381980eddfe0ec700a5011372
 };
 
 export default withRouter(LoginForm);
