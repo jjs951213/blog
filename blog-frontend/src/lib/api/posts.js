@@ -15,3 +15,10 @@ export const writePost = ({ title, body, tags }) =>
     });
     return client.get(`/api/posts?${queryString}`);
   };
+
+  export const updatePost = ({ id, title, body, tags }) =>
+  client.patch(`/api/posts/${id}`,{
+    title,
+    body,
+    tags,
+  });
